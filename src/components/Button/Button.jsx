@@ -4,8 +4,8 @@ const Button = ( {recipe} ) => {
     return(
         <>
         <Btn>Click me</Btn>
-        <Btn active="true">Click me active</Btn>   
-</>
+        <Btn active="true">Click me active</Btn>
+        </>
     )
 }
 
