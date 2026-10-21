@@ -19,6 +19,7 @@ border: solid 5px red;
 border-radius: 20px;
 background-color: white;
 padding: 20px;
+width: 80%;
 `
 
 export const CloseBtn = styled.button`

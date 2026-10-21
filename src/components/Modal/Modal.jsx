@@ -5,13 +5,37 @@ import { createPortal } from "react-dom";
 export class Modal extends Component {
 
 
+    handleBgClick = (e) => {
+        if (e.target === e.currentTarget) {
+            this.props.onClose()
+        }
+    }
+
+    onEsc = (e) => {
+            console.log(e.code);
+    if (e.code === 'Escape') {
+        this.props.onClose()
+    }
+    }
+
+    componentDidMount(){
+        document.addEventListener("keydown", this.onEsc)
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", this.onEsc)
+    }
+
     render(){
 
+
+    const {image, name, onClose} = this.props
+
          return createPortal (
-            <Wrapper>
+            <Wrapper onClick={this.handleBgClick}>
                 <ModalContent>
-                    <img src={this.props.img} alt="" />
-                    <CloseBtn  onClick={this.props.onClose}>X</CloseBtn>
+                    <img src={image} alt={name}/>
+                    <CloseBtn  onClick={onClose}>X</CloseBtn>
                 </ModalContent>
             </Wrapper> ,
             document.body

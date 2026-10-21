@@ -29,23 +29,29 @@ class Recipe extends Component {
     })
   }
 
+
+
+
   render() {
+
+    const { image, name} = this.props.recipeItem
+
     return (
       <div>
 
-        <Wrapper onClick={this.openMenu}>
+        <Wrapper>
           <Img
             width={400}
-            src={this.props.recipeItem.image}
-            alt={this.props.recipeItem.name}
+            src={image}
+            alt={name}
+             onClick={this.onOpenModal}
           />
-                     {this.state.isModalOpen && <Modal img={this.props.recipeItem.image} onClose={this.onCloseModal}/>}
-                      <button onClick={this.onOpenModal}>Open Image</button>
+                     {this.state.isModalOpen && <Modal image={image} name={name} onClose={this.onCloseModal}/>}
         </Wrapper>
         <Title>
-          <MdOutlineDriveFileRenameOutline /> {this.props.recipeItem.name}
-
+          <MdOutlineDriveFileRenameOutline /> {name}
         </Title>
+        <button onClick={this.openMenu}>More info</button>
         {this.state.isOpen && (
           <>
             <RecipeInfo recipe={this.props.recipeItem} />
